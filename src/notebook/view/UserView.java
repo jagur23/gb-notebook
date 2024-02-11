@@ -21,8 +21,11 @@ public class UserView {
             com = Commands.valueOf(command);
             if (com == Commands.EXIT) return;
             switch (com) {
+                case LIST:
+                    System.out.println(userController.readAll());
+                    break;
                 case CREATE:
-                    User u = createUser();
+                    User u = createUser(); // vo View ne dolzno nichego sozdavatjsja
                     userController.saveUser(u);
                     break;
                 case READ:
