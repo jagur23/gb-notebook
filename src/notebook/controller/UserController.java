@@ -17,6 +17,10 @@ public class UserController implements Controller{
         repository.create(user);
     }
 
+    public void deleteUser(Long userId) {
+        repository.delete(userId);
+    }
+
     public User readUser(Long userId) throws Exception {
         List<User> users = repository.findAll();
         for (User user : users) {

@@ -21,13 +21,17 @@ public class UserView {
             com = Commands.valueOf(command);
             if (com == Commands.EXIT) return;
             switch (com) {
+                case DELETE:
+                    String deleteId = prompt("Enter user id: ");
+                    userController.deleteUser(Long.parseLong(deleteId));
+                    break;
                 case LIST:
                     System.out.println(userController.readAll());
                     break;
                 case CREATE:
-                    User u = createUser(); // vo View ne dolzno nichego sozdavatjsja
-                    userController.saveUser(u);
+                    userController.saveUser(createUser());
                     break;
+
                 case READ:
                     String id = prompt("Идентификатор пользователя: ");
                     try {
@@ -41,6 +45,7 @@ public class UserView {
                 case UPDATE:
                     String userId = prompt("Enter user id: ");
                     userController.updateUser(userId, createUser());
+                    break;
             }
         }
     }
